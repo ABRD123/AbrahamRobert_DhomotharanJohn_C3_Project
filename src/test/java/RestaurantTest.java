@@ -73,7 +73,33 @@ class RestaurantTest {
         itemNames.add("Sweet Corn Soup");
         itemNames.add("Vegetable Lasagne");
 
-        assertNotEquals(388,restaurant.getOrderValue(itemNames));
+        assertNotEquals(300,restaurant.getOrderValue(itemNames));
+    }
+
+    @Test
+    public void order_cost_equals_zero(){
+        restaurant.addToMenu("Sweet Corn Soup",119);
+        restaurant.addToMenu("Vegetable Lasagne",269);
+        restaurant.addToMenu("Sizzling Brownie",319);
+
+        List<String> itemNames = new ArrayList<>();
+        itemNames.add("Corn Soup");
+        itemNames.add("Lasagne");
+
+        assertEquals(0,restaurant.getOrderValue(itemNames));
+    }
+
+    @Test
+    public void order_cost_equals_correct_order_price(){
+        restaurant.addToMenu("Sweet Corn Soup",119);
+        restaurant.addToMenu("Vegetable Lasagne",269);
+        restaurant.addToMenu("Sizzling Brownie",319);
+
+        List<String> itemNames = new ArrayList<>();
+        itemNames.add("Sweet Corn Soup");
+        itemNames.add("Vegetable Lasagne");
+
+        assertEquals(388,restaurant.getOrderValue(itemNames));
     }
 
 }
